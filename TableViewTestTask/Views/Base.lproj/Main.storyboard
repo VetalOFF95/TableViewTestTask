@@ -16,25 +16,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6wK-5a-vnE">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6wK-5a-vnE">
+                                <rect key="frame" x="0.0" y="132" width="414" height="730"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" placeholder="Enter the keyword..." id="Rr4-P8-N1K">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </searchBar>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="newsTableViewCell" id="Akk-Ua-8vg" customClass="NewsTableViewCell" customModule="TableViewTestTask" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="414" height="43.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Akk-Ua-8vg" id="EQ0-Ps-mI2">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" placeholder="Enter the keyword..." id="Rr4-P8-N1K">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.73333333329999995" green="0.88235294119999996" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -42,7 +33,7 @@
                             <constraint firstItem="6wK-5a-vnE" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0q8-cy-PG6"/>
                             <constraint firstItem="6wK-5a-vnE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="J3O-Ot-fQo"/>
                             <constraint firstItem="6wK-5a-vnE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="LmC-5G-R5w"/>
-                            <constraint firstItem="6wK-5a-vnE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XtQ-S7-LsN"/>
+                            <constraint firstItem="6wK-5a-vnE" firstAttribute="top" secondItem="Rr4-P8-N1K" secondAttribute="top" constant="44" id="XtQ-S7-LsN"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="News" id="guk-E3-m8L"/>

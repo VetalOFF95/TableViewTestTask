@@ -61,7 +61,10 @@ class NewsViewController: UIViewController {
 
 //MARK: - TableView
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("------------------------")
+        print(newsVM.getNewsCount())
         return newsVM.getNewsCount()
     }
     

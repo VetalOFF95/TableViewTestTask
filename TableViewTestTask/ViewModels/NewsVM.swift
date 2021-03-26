@@ -29,7 +29,7 @@ class NewsVM {
             for item in data.articles {
                 let newsItemModel = NewsModel(id: item.source.id,
                                               name: item.source.name,
-                                              author: item.author ?? "No author",
+                                              author: item.author ?? "Unknown author",
                                               title: item.title,
                                               description: item.description.replacingOccurrences(of: "\n", with: " "),
                                               urlToImage: item.urlToImage ?? "No url to image",

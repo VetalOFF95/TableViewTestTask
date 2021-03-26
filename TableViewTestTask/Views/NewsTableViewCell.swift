@@ -7,9 +7,11 @@
 
 import UIKit
 import SDWebImage
+import JGProgressHUD
 
 class NewsTableViewCell: UITableViewCell {
 
+    private let spinner = JGProgressHUD(style: .light)
     static let identifier = "newsTableViewCell"
     
     @IBOutlet weak var titleLabel: UILabel!
@@ -34,7 +36,11 @@ class NewsTableViewCell: UITableViewCell {
         nameLabel.text = model.name
         idLabel.text = model.id ?? "No id"
         if let imageUrl = URL(string: model.urlToImage) {
-            urlImageView.sd_setImage(with: imageUrl, completed: nil)
+            DispatchQueue.main.async {
+                self.spinner.show(in: self.urlImageView)
+                self.urlImageView.sd_setImage(with: imageUrl, completed: nil)
+                self.spinner.dismiss()
+            }
         }
     }
     
