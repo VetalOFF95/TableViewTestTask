@@ -25,6 +25,7 @@ class NetworkManager {
     public func fetchNewsData(with keyword: String, completion: @escaping (NewsData?) -> ()) {
         self.keyword = keyword
         guard let url = URL(string: newsURL) else {
+            completion(nil)
             return
         }
         let session = URLSession(configuration: .default)

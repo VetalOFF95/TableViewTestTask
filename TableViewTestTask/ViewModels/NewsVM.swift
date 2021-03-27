@@ -19,12 +19,13 @@ class NewsVM {
     }
     
     public func fetchNews(with keyword: String, completion: @escaping (Bool) -> ()) {
-        newsItems = []
         NetworkManager.shared.fetchNewsData(with: keyword) { [weak self] data in
             guard let data = data else {
                 completion(false)
                 return
             }
+            
+            self?.newsItems = []
             
             for item in data.articles {
                 let newsItemModel = NewsModel(id: item.source.id,

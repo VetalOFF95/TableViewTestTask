@@ -35,10 +35,7 @@ class NewsViewController: UIViewController {
     @objc private func didPullToRefresh() {
         let currentKeyword = NetworkManager.shared.getKeyword()
         updateUI(with: currentKeyword)
-        
-        DispatchQueue.main.async {
-            self.newsTableView.refreshControl?.endRefreshing()
-        }
+        newsTableView.refreshControl?.endRefreshing()
     }
     
     private func updateUI(with keyword: String) {
@@ -63,8 +60,6 @@ class NewsViewController: UIViewController {
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("------------------------")
-        print(newsVM.getNewsCount())
         return newsVM.getNewsCount()
     }
     
