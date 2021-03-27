@@ -18,14 +18,24 @@ class NewsVM {
         return newsItems[indexPath.row]
     }
     
-    public func fetchNews(with keyword: String, completion: @escaping (Bool) -> ()) {
+    public func fetchNews(with keyword: String, isFirstPage: Bool, completion: @escaping (Bool) -> ()) {
+        
+        if isFirstPage {
+            NetworkManager.shared.setPageToFirst()
+        } else {
+            NetworkManager.shared.increacePage()
+        }
+        
         NetworkManager.shared.fetchNewsData(with: keyword) { [weak self] data in
             guard let data = data else {
                 completion(false)
                 return
             }
             
-            self?.newsItems = []
+            if isFirstPage {
+                self?.newsItems = []
+            }
+            
             
             for item in data.articles {
                 let newsItemModel = NewsModel(id: item.source.id,

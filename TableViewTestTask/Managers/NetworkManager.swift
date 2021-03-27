@@ -12,14 +12,37 @@ class NetworkManager {
     private init() {}
     static let shared = NetworkManager()
     
+    let formatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-mm-dd"
+        return formatter
+    }()
+    
     // add your apiKey !!!
     private let apiKey = ""
+    
     private var keyword = ""
+    private let pageSize = 5
+    private var page = 1
+    private var date: String {
+        get {
+            let date = Date()
+            return formatter.string(from: date)
+        }
+    }
     
     private var newsURL: String {
         get {
-            return "https://newsapi.org/v2/everything?q=\(keyword)&from=2021-03-25&sortBy=publishedAt&apiKey=\(apiKey)"
+            return "https://newsapi.org/v2/everything?qInTitle=\(keyword)&from=\(date)&sortBy=publishedAt&pageSize=\(pageSize)&page=\(page)&apiKey=\(apiKey)"
         }
+    }
+    
+    public func setPageToFirst() {
+        page = 1
+    }
+    
+    public func increacePage() {
+        page += 1
     }
     
     public func fetchNewsData(with keyword: String, completion: @escaping (NewsData?) -> ()) {

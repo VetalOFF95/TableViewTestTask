@@ -34,13 +34,13 @@ class NewsViewController: UIViewController {
     
     @objc private func didPullToRefresh() {
         let currentKeyword = NetworkManager.shared.getKeyword()
-        updateUI(with: currentKeyword)
+        updateData(with: currentKeyword, isFirstPage: true)
         newsTableView.refreshControl?.endRefreshing()
     }
     
-    private func updateUI(with keyword: String) {
+    private func updateData(with keyword: String, isFirstPage: Bool) {
         spinner.show(in: view)
-        newsVM.fetchNews(with: keyword) { [weak self] success in
+        newsVM.fetchNews(with: keyword, isFirstPage: isFirstPage) { [weak self] success in
             if success {
                 print("News were fetched successfully!")
                 
@@ -60,21 +60,31 @@ class NewsViewController: UIViewController {
 extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return newsVM.getNewsCount()
+        let newsNumber = newsVM.getNewsCount()
+        return newsNumber == 0 ? 0 : newsNumber + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
-        
-        let newsItem = newsVM.getNewsItem(for: indexPath)
-        cell.fill(with: newsItem)
-        
-        return cell
+        if indexPath.row == newsVM.getNewsCount() {
+            let cell = newsTableView.dequeueReusableCell(withIdentifier: "loadMore", for: indexPath)
+            return cell
+        } else {
+            let cell = newsTableView.dequeueReusableCell(withIdentifier: NewsTableViewCell.identifier, for: indexPath) as! NewsTableViewCell
+            let newsItem = newsVM.getNewsItem(for: indexPath)
+            cell.fill(with: newsItem)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toWebPage", sender: self)
+        if indexPath.row == newsVM.getNewsCount() {
+            let currentKeyword = NetworkManager.shared.getKeyword()
+            updateData(with: currentKeyword, isFirstPage: false)
+        } else {
+            performSegue(withIdentifier: "toWebPage", sender: self)
+        }
+        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
@@ -100,7 +110,7 @@ extension NewsViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         
-        updateUI(with: keyword)
+        updateData(with: keyword, isFirstPage: true)
     }
 
 }
