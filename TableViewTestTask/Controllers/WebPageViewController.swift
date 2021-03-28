@@ -18,7 +18,7 @@ class WebPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         spinner.show(in: view)
         webView.load(URLRequest(url: url!))
         spinner.dismiss()

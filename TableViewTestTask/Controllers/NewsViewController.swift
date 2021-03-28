@@ -18,29 +18,27 @@ class NewsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.hideKeyboardWhenTappedAround()
         
         newsTableView.dataSource = self
         newsTableView.delegate = self
         searchBar.delegate = self
         
         newsTableView.register(UINib(nibName: "NewsTableViewCell", bundle: nil), forCellReuseIdentifier: NewsTableViewCell.identifier)
-        
         newsTableView.refreshControl = UIRefreshControl()
         newsTableView.refreshControl?.addTarget(self,
                                                 action: #selector(didPullToRefresh),
                                                 for: .valueChanged)
-        searchBar.becomeFirstResponder()
     }
     
     @objc private func didPullToRefresh() {
-        let currentKeyword = NetworkManager.shared.getKeyword()
-        updateData(with: currentKeyword, isFirstPage: true)
+        updateData(isFirstPage: true)
         newsTableView.refreshControl?.endRefreshing()
     }
     
-    private func updateData(with keyword: String, isFirstPage: Bool) {
+    private func updateData(isFirstPage: Bool) {
         spinner.show(in: view)
-        newsVM.fetchNews(with: keyword, isFirstPage: isFirstPage) { [weak self] success in
+        newsVM.fetchNews(isFirstPage: isFirstPage) { [weak self] success in
             if success {
                 print("News were fetched successfully!")
                 
@@ -54,6 +52,9 @@ class NewsViewController: UIViewController {
         spinner.dismiss()
     }
 
+    @IBAction func showFilter(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "toFilter", sender: self)
+    }
 }
 
 //MARK: - TableView
@@ -79,21 +80,25 @@ extension NewsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row == newsVM.getNewsCount() {
-            let currentKeyword = NetworkManager.shared.getKeyword()
-            updateData(with: currentKeyword, isFirstPage: false)
+            updateData(isFirstPage: false)
         } else {
             performSegue(withIdentifier: "toWebPage", sender: self)
         }
-        
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
+//MARK: - Prepare segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destinationVC = segue.destination as! WebPageViewController
-        if let indexPath = newsTableView.indexPathForSelectedRow {
-            if let newsUrl = newsVM.getNewsItemUrl(for: indexPath) {
-                destinationVC.url = newsUrl
+        if segue.identifier == "toWebPage" {
+            let destinationVC = segue.destination as! WebPageViewController
+            if let indexPath = newsTableView.indexPathForSelectedRow {
+                if let newsUrl = newsVM.getNewsItemUrl(for: indexPath) {
+                    destinationVC.url = newsUrl
+                }
             }
+        } else if segue.identifier == "toFilter" {
+            let destinationVC = segue.destination as! FilterViewController
+            destinationVC.delegate = self
         }
     }
 }
@@ -110,7 +115,15 @@ extension NewsViewController: UISearchBarDelegate {
         searchBar.resignFirstResponder()
         searchBar.text = ""
         
-        updateData(with: keyword, isFirstPage: true)
+        newsVM.setKeyword(keyword)
+        updateData(isFirstPage: true)
     }
+}
 
+//MARK: - Filter Top Headlines
+extension NewsViewController: FilterDelegate {
+    func setFilter(filter: FilterModel) {
+        newsVM.setFilter(filter)
+        updateData(isFirstPage: true)
+    }
 }
