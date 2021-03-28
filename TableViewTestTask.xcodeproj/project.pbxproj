@@ -27,6 +27,7 @@
 		FAD94F5B2610C05700B65BAE /* FilterVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD94F5A2610C05700B65BAE /* FilterVM.swift */; };
 		FAD94F5F2610C31200B65BAE /* FilterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD94F5E2610C31200B65BAE /* FilterData.swift */; };
 		FAD94F622610CC6400B65BAE /* Country.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD94F612610CC6400B65BAE /* Country.swift */; };
+		FAD94F982610F86800B65BAE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD94F972610F86800B65BAE /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -54,6 +55,7 @@
 		FAD94F5A2610C05700B65BAE /* FilterVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVM.swift; sourceTree = "<group>"; };
 		FAD94F5E2610C31200B65BAE /* FilterData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterData.swift; sourceTree = "<group>"; };
 		FAD94F612610CC6400B65BAE /* Country.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Country.swift; sourceTree = "<group>"; };
+		FAD94F972610F86800B65BAE /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				FACEAEBE260CC9D70040333B /* AppDelegate.swift */,
+				FAD94F972610F86800B65BAE /* SceneDelegate.swift */,
 				FAD94F522610AF4700B65BAE /* Common */,
 				FACEAEDF260CCD3E0040333B /* Models */,
 				FACEAEEE260CD9090040333B /* ViewModels */,
@@ -292,6 +295,7 @@
 				FACEAEC3260CC9D70040333B /* NewsViewController.swift in Sources */,
 				FAD94F5026108A7300B65BAE /* FilterModel.swift in Sources */,
 				FAD94F542610AF7E00B65BAE /* URLBuilder.swift in Sources */,
+				FAD94F982610F86800B65BAE /* SceneDelegate.swift in Sources */,
 				FACEAEE1260CCD850040333B /* NewsData.swift in Sources */,
 				FACEAED9260CCC280040333B /* NewsTableViewCell.swift in Sources */,
 				FAD94F4B260FE76F00B65BAE /* FilterViewController.swift in Sources */,
@@ -376,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -431,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
