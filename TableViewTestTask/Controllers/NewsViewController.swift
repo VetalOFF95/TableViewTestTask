@@ -112,6 +112,8 @@ extension NewsViewController: UISearchBarDelegate {
             return
         }
         
+        newsTableView.isHidden = false
+        
         searchBar.resignFirstResponder()
         searchBar.text = ""
         
@@ -123,6 +125,7 @@ extension NewsViewController: UISearchBarDelegate {
 //MARK: - Filter Top Headlines
 extension NewsViewController: FilterDelegate {
     func setFilter(filter: FilterModel) {
+        newsTableView.isHidden = false
         newsVM.setFilter(filter)
         updateData(isFirstPage: true)
     }

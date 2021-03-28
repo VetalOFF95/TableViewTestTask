@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5320DE356FDAE0056D17546F /* Pods_TableViewTestTask.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5A27E1FEAB1033F9B385D85 /* Pods_TableViewTestTask.framework */; };
 		FACEAEBF260CC9D70040333B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEAEBE260CC9D70040333B /* AppDelegate.swift */; };
-		FACEAEC1260CC9D70040333B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEAEC0260CC9D70040333B /* SceneDelegate.swift */; };
 		FACEAEC3260CC9D70040333B /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FACEAEC2260CC9D70040333B /* NewsViewController.swift */; };
 		FACEAEC6260CC9D70040333B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FACEAEC4260CC9D70040333B /* Main.storyboard */; };
 		FACEAEC8260CC9D90040333B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FACEAEC7260CC9D90040333B /* Assets.xcassets */; };
@@ -36,7 +35,6 @@
 		E42BA06A35C89A242938105D /* Pods-TableViewTestTask.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TableViewTestTask.debug.xcconfig"; path = "Target Support Files/Pods-TableViewTestTask/Pods-TableViewTestTask.debug.xcconfig"; sourceTree = "<group>"; };
 		FACEAEBB260CC9D70040333B /* TableViewTestTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TableViewTestTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FACEAEBE260CC9D70040333B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		FACEAEC0260CC9D70040333B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		FACEAEC2260CC9D70040333B /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
 		FACEAEC5260CC9D70040333B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FACEAEC7260CC9D90040333B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -109,7 +107,6 @@
 			isa = PBXGroup;
 			children = (
 				FACEAEBE260CC9D70040333B /* AppDelegate.swift */,
-				FACEAEC0260CC9D70040333B /* SceneDelegate.swift */,
 				FAD94F522610AF4700B65BAE /* Common */,
 				FACEAEDF260CCD3E0040333B /* Models */,
 				FACEAEEE260CD9090040333B /* ViewModels */,
@@ -302,7 +299,6 @@
 				FACEAEBF260CC9D70040333B /* AppDelegate.swift in Sources */,
 				FAD94F622610CC6400B65BAE /* Country.swift in Sources */,
 				FACEAEE6260CCF4F0040333B /* NetworkManager.swift in Sources */,
-				FACEAEC1260CC9D70040333B /* SceneDelegate.swift in Sources */,
 				FACEAEF0260CD9230040333B /* NewsVM.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -380,7 +376,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -435,7 +431,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

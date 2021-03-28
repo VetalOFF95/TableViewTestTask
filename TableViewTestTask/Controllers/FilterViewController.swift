@@ -39,8 +39,7 @@ class FilterViewController: UIViewController {
         filterVM.prepareCountriesData()
     }
     
-    @IBAction func applyButtonPressed(_ sender: UIButton) {
-
+    @IBAction func searchButtonPressed(_ sender: UIBarButtonItem) {
         if (categoryTextField.hasText || countryTextField.hasText) &&
             !sourceTextView.text.trim().isEmpty {
             
@@ -66,10 +65,9 @@ class FilterViewController: UIViewController {
                                           sources: sourceTextView.text!.trim())
             delegate?.setFilter(filter: filterModel)
             
-            dismiss(animated: true, completion: nil)
+//            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
-        
-        
     }
 }
 
