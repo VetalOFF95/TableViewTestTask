@@ -16,7 +16,7 @@ class URLBuilder {
     private var url: String
     
     /// add your apiKey !!!
-    private let apiKey = "4fb30e0e404a4cfa9eaf87492b44e311"
+    private let apiKey = ""
     private var baseEverythingURL = "https://newsapi.org/v2/everything"
     private var baseTopHeadlinesURL = "https://newsapi.org/v2/top-headlines"
     
